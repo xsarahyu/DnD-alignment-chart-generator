@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>DnD Alignment</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="page-header text-center">
+            <h1><span class="fa fa-anchor"></span> Profile Page</h1>
+            <a href="/logout" class="btn btn-default btn-sm">Log Out</a>
+        </div>
+
+        <div class="row">
+            <!-- LOCAL INFORMATION -->
+            <div>
+                <div class="well">
+                    <h3><span class="fa fa-user"></span> Local</h3>
+                    <% if (user.local.email) { %>
+                        <p>
+                            <strong>id</strong>: <%= user._id %><br>
+                            <strong>email</strong>: <%= user.local.email %><br>
+                            <strong>password</strong>: <%= user.local.password %>
+                        </p>
+
+                        <a href="/unlink/local" class="btn btn-default">Unlink</a>
+                        <% } else { %>
+                            <a href="/connect/local" class="btn btn-default">Connect Local</a>
+                            <% } %>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <h3>Increments</h3>
+                <% if (user.local.email) { %>
+                    <form action="/increments" method="POST">
+                        <input type="text" placeholder="i = i + 1" name="increment">
+                        <button type="submit">Submit</button>
+                    </form>
+                <% } %>
+                <ul class="increments">
+                    <% for (let i=0; i<increments.length; i++) {%>
+                        <li class="increment">
+                            <span><%= increments[i].increment %></span>
+                            <select class="alignment-dropdown">
+                                <option hidden disabled selected value>Select Alignment</option>
+                                <option value="lawful good" <%= increments[i].alignment === 'lawful good' ? 'selected' : '' %>>Lawful Good</option>
+                                <option value="neutral good" <%= increments[i].alignment === 'neutral good' ? 'selected' : '' %>>Neutral Good</option>
+                                <option value="chaotic good" <%= increments[i].alignment === 'chaotic good' ? 'selected' : '' %>>Chaotic Good</option>
+                                <option value="lawful neutral" <%= increments[i].alignment === 'lawful neutral' ? 'selected' : '' %>>Lawful Neutral</option>
+                                <option value="true neutral" <%= increments[i].alignment === 'true neutral' ? 'selected' : '' %>>True Neutral</option>
+                                <option value="chaotic neutral" <%= increments[i].alignment === 'chaotic neutral' ? 'selected' : '' %>>Chaotic Neutral</option>
+                                <option value="lawful evil" <%= increments[i].alignment === 'lawful evil' ? 'selected' : '' %>>Lawful Evil</option>
+                                <option value="neutral evil" <%= increments[i].alignment === 'neutral evil' ? 'selected' : '' %>>Neutral Evil</option>
+                                <option value="chaotic evil" <%= increments[i].alignment === 'chaotic evil' ? 'selected' : '' %>>Chaotic Evil</option>
+                            </select>
+                            <span><i class="fa fa-trash" aria-hidden="true"></i></span>
+                        </li>
+                    <% } %>
+                </ul>
+                <div class="grid-container">
+                    <div class="grid-item" id="lawful-good">Lawful Good</div>
+                    <div class="grid-item" id="neutral-good">Neutral Good</div>
+                    <div class="grid-item" id="chaotic-good">Chaotic Good</div>
+                    <div class="grid-item" id="lawful-neutral">Lawful Neutral</div>
+                    <div class="grid-item" id="true-neutral">True Neutral</div>
+                    <div class="grid-item" id="chaotic-neutral">Chaotic Neutral</div>
+                    <div class="grid-item" id="lawful-evil">Lawful Evil</div>
+                    <div class="grid-item" id="neutral-evil">Neutral Evil</div>
+                    <div class="grid-item" id="chaotic-evil">Chaotic Evil</div>
+                </div>
+            </div>
+            
+        </div>
+
+    </div>
+    
+    <script src="main.js"></script>
+</body>
+
+</html>
