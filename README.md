@@ -1,0 +1,1 @@
+# DnD-alignment-chart-generator
