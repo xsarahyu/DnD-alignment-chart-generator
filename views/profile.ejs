@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>DnD Alignment</title>
+    <title>Alignment Chart Generator</title>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
     <!-- <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> -->
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
@@ -36,10 +36,10 @@
                 </div>
             </div>
             <div class="col-sm-6">
-                <h3>Increments</h3>
+                <h3>Alignment Chart Generator</h3>
                 <% if (user.local.email) { %>
                     <form action="/increments" method="POST">
-                        <input type="text" placeholder="i = i + 1" name="increment">
+                        <input type="text" name="increment" placeholder="Item to be aligned">
                         <button type="submit">Submit</button>
                     </form>
                 <% } %>
